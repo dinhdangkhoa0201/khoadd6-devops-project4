@@ -1,0 +1,42 @@
+version: 2
+jobs:
+    build:
+        docker:
+            -   image: python:3.7.3-stretch
+        working_directory: ~/repo
+        steps:
+            - checkout
+            -   restore_cache:
+                    keys:
+                        - v1-deps-{{ checksum "requirements.txt" }}
+                        - v1-deps-
+            -   run:
+                    name: Install pythong dependencies
+                    command: |
+                        make setup
+                        source ~/.devops/bin/activate
+                        make install
+            -   save_cache:
+                    key: v1-deps-{{ checksum "requirements.txt" }}
+                    paths:
+                        - ~/.devops
+            -   run:
+                    name: Install hadolint
+                    command: |
+                        sudo make install-hadolint
+            -   run:
+                    name: Run Lint
+                    command: |
+                        source ~/.devops/bin/activate
+                        make lint
+            -   run:
+                    name: Run test
+                    command: |
+                        source ~/.devops/bin/activate
+                        make test-junit
+            -   store_test_results:
+                    path: ~/test-results
+workflows:
+    main:
+        jobs:
+            - build
