@@ -4,7 +4,7 @@
 
 # Step 1:
 # This is your Docker ID/path
- dockerpath=dinhdangkhoa0201/khoadd6-devops-project4-api
+dockerpath=dinhdangkhoa0201/khoadd6-devops-project4-api
 
 # Step 2
 # Run the Docker Hub container with kubernetes
