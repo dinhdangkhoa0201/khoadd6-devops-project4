@@ -12,11 +12,15 @@ setup:
 
 install:
 	# This should be run from inside a virtualenv
-	pip install --upgrade pip && pip install -r requirements.txt
+	pip3 install --trusted-host pypi.python.org -r requirements.txt
 
 install-hadolint:
 	wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.17.5/hadolint-Linux-x86_64
 	chmod +x /bin/hadolint
+
+install-minikube:
+	wget -O /bin/minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+	chmod +x /bin/minikube
 
 install-all: install install-hadolint
 
@@ -24,6 +28,10 @@ test:
 	# Additional, optional, tests could go here
 	#python -m pytest -vv --cov=myrepolib tests/*.py
 	#python -m pytest --nbval notebook.ipynb
+	python3 -m pytest -vv test_app.py --junitxml=~/test-results/junit.xml
+
+test-junit:
+	# Generate test results for circleci
 	python3 -m pytest -vv test_app.py --junitxml=~/test-results/junit.xml
 
 lint:
