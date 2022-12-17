@@ -11,7 +11,7 @@ jobs:
                         - v1-deps-{{ checksum "requirements.txt" }}
                         - v1-deps-
             -   run:
-                    name: Install pythong dependencies
+                    name: Install dependencies
                     command: |
                         make setup
                         source ~/.devops/bin/activate
