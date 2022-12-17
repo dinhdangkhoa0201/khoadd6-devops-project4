@@ -13,7 +13,7 @@ def test_predict():
         res = client.post(
             "/predict",
             json={
-                "CHA": {"0": 0},
+                "CHAS": {"0": 0},
                 "RM": {"0": 6.575},
                 "RM": {"0": 296.0},
                 "PTRATIO": {"0": 15.3},
