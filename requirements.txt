@@ -1,16 +1,6 @@
-Click
 Flask
-itsdangerous
-Jinja2
-MarkupSafe
 numpy
 pandas
-python-dateutil
-pytz
-scikit-learn
-scipy
-six
-Werkzeug
+scikit-learn==0.20.2
 pylint
-pytest
-sklearn== 0.24.0
+circleci
