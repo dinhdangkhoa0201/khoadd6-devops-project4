@@ -121,6 +121,24 @@ $ . ./upload_docker.sh
 -   [Install Kubernetes](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl-on-linux)
 -   [Install Minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/)
 
+Start minikube
+```sh
+$ minukube start
+```
+
+View config
+```sh
+$ kubectl config view
+```
+
+Create Flask app
+```sh
+$ kubectl run khoadd6-devops-project4-api \
+  --image=dinhdangkhoa0201/khoadd6-devops-project4-api \
+  --port=80 \
+  --labels app=khoadd6-devops-project4-api
+```
+
 > **Note:** Check the `Workarounds` section for common issues.
 
 ### 6. Deploy with Kubernetes and Save Output Logs
