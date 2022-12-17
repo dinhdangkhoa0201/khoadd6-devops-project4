@@ -13,8 +13,8 @@ r=$(kubectl get pod khoadd6-devops-project4-api 2> /dev/null;echo $?)
 if [ "_$r" == "_1" ] ; then
   kubectl run khoadd6-devops-project4-api \
   --image=$dockerpath \
-  --image-pull-policy="Always" \
-  --overrides='{"apiVersion": "v1", "spec": {"imagePullSecrets": [{"name": "regcred"}]}}'
+  --port=80 \
+  --labels app=khoadd6-devops-project4-api
 fi
 
 # Step 3:
